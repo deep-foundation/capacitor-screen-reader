@@ -7,6 +7,20 @@ import { PACKAGE_NAME } from './package-name';
 import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
 import { SpeakOptions } from '@capacitor/screen-reader';
 
+/**
+ * Gets serial operations to insert SpeakOptions
+ * 
+ * @example
+```ts
+const serialOperations = await getSpeakOptionsInsertSerialOperations({
+  deep,
+  speakOptions
+});
+await deep.serial({
+  operations: serialOperations
+})
+```
+ */
 export async function getSpeakOptionsInsertSerialOperations(
   param: InsertSpeakOptionsParam
 ): Promise<Array<SerialOperation>> {
