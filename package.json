@@ -1,7 +1,9 @@
 {
   "name": "@deep-foundation/capacitor-screen-reader",
-  "keywords": [],
-  "version": "0.0.1",
+  "keywords": [
+    "deep-package"
+  ],
+  "version": "1.0.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -20,7 +22,9 @@
     "./deep.json"
   ],
   "dependencies": {
-    "@deep-foundation/core": "^0.0.2"
+    "@deep-foundation/core": "^0.0.2",
+    "@deep-foundation/device": "~1.0.0",
+    "@deep-foundation/notification": "~1.0.0"
   },
   "devDependencies": {
     "@atao60/fse-cli": "^0.1.7",
