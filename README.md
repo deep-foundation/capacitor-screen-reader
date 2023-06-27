@@ -2,22 +2,39 @@
 [![Gitpod](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/deep-foundation/capacitor-screen-reader) 
 [![Discord](https://badgen.net/badge/icon/discord?icon=discord&label&color=purple)](https://discord.gg/deep-foundation)
 
-## Installation and setup
+Provides links based on [`@capacitor/screen-reader`](https://www.npmjs.com/package/@capacitor/screen-reader). 
 
-### Automatically
+[**Documentation**](https://deep-foundation.github.io/capacitor-screen-reader/) 
 
-```bash
-npx @deep-foundation/create-typescript-npm-package@latest --package-name="<PACKAGE_NAME>" --directory="<DIRECTORY>" --description="Provides links for working with @capacitor/screen-reader" --repository-url="<REPOSITORY_URL>"
-```
-Note: change placeholders (`<>`) to your values
+[**List of links**](https://deep-foundation.github.io/capacitor-screen-reader/enums/LinkName.html)
 
-### Manually
-- Replace `<PACKAGE_NAME>` in files to your package name
-- Replace `<DESCRIPTION>` in files to your package description
-- Replace `<REPOSITORY_URL>` in files to your package repository url
+## SpeakOptions Object Value
+
+The [`SpeakOptions`] link can have object value.  
+No one field is required. You can add any fields as you want.  Only the fields that are supported by this package will be represented as links   
+[Supported fields can be found in the `SpeakOptions` interface](https://capacitorjs.com/docs/apis/screen-reader#speakoptions)  
+
+## Prerequisitions
+- Install this package in your deep by using npm-packager
+- Provide permissions to this package
 
 ## Usage
 
-Export anything you want to let users of your package use your package programatically by using Javascript.  
-Use `npm run npm-pull` to pull data from npm. This should be used as often as possible because you or your teammate could have published a new version of the package by using deep's `npm-packager` package  and you can overwrite those changes if you do not pull them before  
-Use  `npm run npm-release [NEW_VERSION]` to release new version. If you do not pass argument the version will be patched. Note that this script does not publish your package because github action will publish your package when you push your changes after using this command
+### Manually
+1. Insert a link of type [`ScreenOptions`] 
+2.  Change its object value to the object with properties described in [SpeakOptions Object Value](#md:screen-reader-object-value) and this update will be handled by the [`UpdateHandler`](https://freephoenix888.github.io/object-to-links-async-converter/enums/LinkName.html#UpdateHandler) to represent [`ScreenOptions`] object value as links
+or  
+Insert a link of any type with a any name of the list described in [SpeakOptions Object Value](#md:screen-reader-object-value) from [`ScreenOptions`] link to the same [`ScreenOptions`] link and set its value to the value of the corresponding property of the [`ScreenOptions`] object value
+
+### By using this library programatically
+- [Get Speak Options Insert Serial Operations](https://deep-foundation.github.io/capacitor-screen-reader/functions/getSpeakOptionsInsertSerialOperations.html)  
+
+## Update Handling
+
+[`ScreenOptions`] updates are handled by the [`UpdateHandler`](https://freephoenix888.github.io/object-to-links-async-converter/enums/LinkName.html#UpdateHandler) to represent [`ScreenOptions`] object value as links
+
+## Contribution
+
+Feel free to contribute. Please fork the repository and submit a pull request for any bugs, improvements, or features.
+
+[`ScreenOptions`]: https://deep-foundation.github.io/capacitor-screen-reader/enums/LinkName.html#Screen-reader

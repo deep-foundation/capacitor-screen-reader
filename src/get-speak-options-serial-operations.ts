@@ -14,7 +14,10 @@ import { SpeakOptions } from '@capacitor/screen-reader';
 ```ts
 const serialOperations = await getSpeakOptionsInsertSerialOperations({
   deep,
-  speakOptions
+  speakOptions: {
+    value: "Hello world",
+    language: "en"
+  }
 });
 await deep.serial({
   operations: serialOperations
