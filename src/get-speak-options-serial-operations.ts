@@ -73,10 +73,12 @@ export async function getSpeakOptionsInsertSerialOperations(
 
   return serialOperations;
 
+  type GetReservedLinkIdsResult = Exclude<InsertSpeakOptionsParam['reservedLinkIds'], undefined>;
+
   async function getReservedLinkIds(): Promise<
-    Exclude<InsertSpeakOptionsParam['reservedLinkIds'], undefined>
+  GetReservedLinkIdsResult
   > {
-    let result = {
+    let result: GetReservedLinkIdsResult = {
       containLinkId: 0,
       speakOptionsLinkId: 0,
     };
@@ -89,10 +91,12 @@ export async function getSpeakOptionsInsertSerialOperations(
     return result;
   }
 
+  type GetTypeLinkIdsResult = Exclude<InsertSpeakOptionsParam['typeLinkIds'], undefined>;
+
   async function getTypeLinkIds(): Promise<
-    Required<Exclude<InsertSpeakOptionsParam['typeLinkIds'], undefined>>
+  GetTypeLinkIdsResult
   > {
-    return {
+    const result: GetTypeLinkIdsResult = {
       containTypeLinkId:
         param.typeLinkIds?.containTypeLinkId ||
         (await deep.id('@deep-foundation/core', 'Contain')),
@@ -100,6 +104,7 @@ export async function getSpeakOptionsInsertSerialOperations(
         param.typeLinkIds?.speakOptionsTypeLinkId ||
         (await deep.id(PACKAGE_NAME, LinkName[LinkName.SpeakOptions])),
     };
+    return result
   }
 }
 
