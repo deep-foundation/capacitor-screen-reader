@@ -76,21 +76,17 @@ export async function getSpeakOptionsInsertSerialOperations(
   async function getReservedLinkIds(): Promise<
     Exclude<InsertSpeakOptionsParam['reservedLinkIds'], undefined>
   > {
-    if (param.reservedLinkIds) {
-      return param.reservedLinkIds;
-    } else {
-      let result = {
-        containLinkId: 0,
-        speakOptionsLinkId: 0,
-      };
-      const linksToReserveCount = Object.keys(result).length;
-      const reservedLinkIds = await deep.reserve(linksToReserveCount);
-      result = {
-        containLinkId: reservedLinkIds.pop()!,
-        speakOptionsLinkId: reservedLinkIds.pop()!,
-      };
-      return result;
-    }
+    let result = {
+      containLinkId: 0,
+      speakOptionsLinkId: 0,
+    };
+    const linksToReserveCount = Object.keys(result).length - Object.keys(param.reservedLinkIds || {}).length;
+    const reservedLinkIds: number[] = linksToReserveCount > 0 ? await deep.reserve(linksToReserveCount) : [];
+    result = {
+      containLinkId: param.reservedLinkIds?.containLinkId ?? reservedLinkIds.pop()!,
+      speakOptionsLinkId: param.reservedLinkIds?.speakOptionsLinkId ?? reservedLinkIds.pop()!,
+    };
+    return result;
   }
 
   async function getTypeLinkIds(): Promise<
