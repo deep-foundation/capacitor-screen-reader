@@ -21,20 +21,20 @@ No one field is required. You can add any fields as you want.  Only the fields t
 ## Usage
 
 ### Manually
-1. Insert a link of type [`ScreenOptions`] 
-2.  Change its object value to the object with properties described in [SpeakOptions Object Value](#md:screen-reader-object-value) and this update will be handled by the [`UpdateHandler`](https://freephoenix888.github.io/object-to-links-async-converter/enums/LinkName.html#UpdateHandler) to represent [`ScreenOptions`] object value as links
+1. Insert a link of type [`SpeakOptions`] 
+2.  Change its object value to the object with properties described in [SpeakOptions Object Value](#md:screen-reader-object-value) and this update will be handled by the [`UpdateHandler`](https://freephoenix888.github.io/object-to-links-async-converter/enums/LinkName.html#UpdateHandler) to represent [`SpeakOptions`] object value as links
 or  
-Insert a link of any type with a any name of the list described in [SpeakOptions Object Value](#md:screen-reader-object-value) from [`ScreenOptions`] link to the same [`ScreenOptions`] link and set its value to the value of the corresponding property of the [`ScreenOptions`] object value
+Insert a link of any type with a any name of the list described in [SpeakOptions Object Value](#md:screen-reader-object-value) from [`SpeakOptions`] link to the same [`SpeakOptions`] link and set its value to the value of the corresponding property of the [`SpeakOptions`] object value
 
 ### By using this library programatically
 - [Get Speak Options Insert Serial Operations](https://deep-foundation.github.io/capacitor-screen-reader/functions/getSpeakOptionsInsertSerialOperations.html)  
 
 ## Update Handling
 
-[`ScreenOptions`] updates are handled by the [`UpdateHandler`](https://freephoenix888.github.io/object-to-links-async-converter/enums/LinkName.html#UpdateHandler) to represent [`ScreenOptions`] object value as links
+[`SpeakOptions`] updates are handled by the [`UpdateHandler`](https://freephoenix888.github.io/object-to-links-async-converter/enums/LinkName.html#UpdateHandler) to represent [`SpeakOptions`] object value as links
 
 ## Contribution
 
 Feel free to contribute. Please fork the repository and submit a pull request for any bugs, improvements, or features.
 
-[`ScreenOptions`]: https://deep-foundation.github.io/capacitor-screen-reader/enums/LinkName.html#Screen-reader
+[`SpeakOptions`]: https://deep-foundation.github.io/capacitor-screen-reader/enums/LinkName.html#Screen-reader
