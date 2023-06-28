@@ -73,29 +73,36 @@ export async function getSpeakOptionsInsertSerialOperations(
 
   return serialOperations;
 
-  type GetReservedLinkIdsResult = Exclude<InsertSpeakOptionsParam['reservedLinkIds'], undefined>;
+  type GetReservedLinkIdsResult = Exclude<
+    InsertSpeakOptionsParam['reservedLinkIds'],
+    undefined
+  >;
 
-  async function getReservedLinkIds(): Promise<
-  GetReservedLinkIdsResult
-  > {
+  async function getReservedLinkIds(): Promise<GetReservedLinkIdsResult> {
     let result: GetReservedLinkIdsResult = {
       containLinkId: 0,
       speakOptionsLinkId: 0,
     };
-    const linksToReserveCount = Object.keys(result).length - Object.keys(param.reservedLinkIds || {}).length;
-    const reservedLinkIds: number[] = linksToReserveCount > 0 ? await deep.reserve(linksToReserveCount) : [];
+    const linksToReserveCount =
+      Object.keys(result).length -
+      Object.keys(param.reservedLinkIds || {}).length;
+    const reservedLinkIds: number[] =
+      linksToReserveCount > 0 ? await deep.reserve(linksToReserveCount) : [];
     result = {
-      containLinkId: param.reservedLinkIds?.containLinkId ?? reservedLinkIds.pop()!,
-      speakOptionsLinkId: param.reservedLinkIds?.speakOptionsLinkId ?? reservedLinkIds.pop()!,
+      containLinkId:
+        param.reservedLinkIds?.containLinkId ?? reservedLinkIds.pop()!,
+      speakOptionsLinkId:
+        param.reservedLinkIds?.speakOptionsLinkId ?? reservedLinkIds.pop()!,
     };
     return result;
   }
 
-  type GetTypeLinkIdsResult = Exclude<InsertSpeakOptionsParam['typeLinkIds'], undefined>;
+  type GetTypeLinkIdsResult = Exclude<
+    InsertSpeakOptionsParam['typeLinkIds'],
+    undefined
+  >;
 
-  async function getTypeLinkIds(): Promise<
-  GetTypeLinkIdsResult
-  > {
+  async function getTypeLinkIds(): Promise<GetTypeLinkIdsResult> {
     const result: GetTypeLinkIdsResult = {
       containTypeLinkId:
         param.typeLinkIds?.containTypeLinkId ||
@@ -104,7 +111,7 @@ export async function getSpeakOptionsInsertSerialOperations(
         param.typeLinkIds?.speakOptionsTypeLinkId ||
         (await deep.id(PACKAGE_NAME, LinkName[LinkName.SpeakOptions])),
     };
-    return result
+    return result;
   }
 }
 
