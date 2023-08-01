@@ -11,10 +11,13 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "clean-build": "fse remove dist && npm run build",
+    "library:build:clean": "fse remove dist && npm run library:build:dirty",
+    "library:build:dirty": "ts-node --esm ./automation/library/build.ts",
     "npm-pull": "npm-pull",
-    "npm-release": "npm-release"
+    "npm-release": "npm-release",
+    "library:build:generate-package-class": "generate-package-class",
+    "documentation:generate": "ts-node --esm ./automation/documentation/generate.ts",
+    "library:documentation:generate": "typedoc ./src/main.ts"
   },
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -29,14 +32,14 @@
   },
   "devDependencies": {
     "@atao60/fse-cli": "^0.1.7",
-    "@deep-foundation/npm-automation": "^1.0.3",
+    "@deep-foundation/npm-automation": "^17.2.4",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.2.4",
     "fs-extra": "^11.1.1",
     "typescript": "5.0.4"
   },
   "peerDependencies": {
-    "@deep-foundation/deeplinks": "~0.0.198",
+    "@deep-foundation/deeplinks": "~0.0.265",
     "@capacitor/screen-reader": "~5.0.4"
   }
 }
