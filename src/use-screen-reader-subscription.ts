@@ -41,17 +41,17 @@ export async function useScreenReaderSubscription({deep, deviceLinkId}: {deep: D
         '@deep-foundation/core',
         'Contain'
       );
-      const notProcessedNotifyLinks = notifyLinks.filter(
+      const notProcessedNotifyLinks = notifyLinks?.filter(
         (link) => !notifyLinksBeingProcessed.current.includes(link)
       );
       notifyLinksBeingProcessed.current = [
         ...notifyLinksBeingProcessed.current,
-        ...notProcessedNotifyLinks,
+        ...(notProcessedNotifyLinks || []),
       ];
-      for (const notifyLink of notifyLinks) {
+      for (const notifyLink of (notifyLinks || [])) {
         const options = await getSpeakOptions({
           deep,
-          linkId: notifyLink.from_id,
+          linkId: notifyLink.from_id as any,
         });
         await ScreenReader.speak(options);
         await deep.insert({
@@ -69,7 +69,7 @@ export async function useScreenReaderSubscription({deep, deviceLinkId}: {deep: D
       const processedNotifyLinks = notProcessedNotifyLinks;
       notifyLinksBeingProcessed.current =
         notifyLinksBeingProcessed.current.filter(
-          (link) => !processedNotifyLinks.includes(link)
+          (link) => !processedNotifyLinks?.includes(link)
         );
     });
   }, [notifyLinks, loading, error]);

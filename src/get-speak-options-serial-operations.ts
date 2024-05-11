@@ -3,7 +3,7 @@ import {
   SerialOperation,
 } from '@deep-foundation/deeplinks/imports/client';
 import { LinkName } from './link-name';
-import { PACKAGE_NAME } from './package-name';
+import { CAPACITOR_SCREEN_READER_PACKAGE_NAME as PACKAGE_NAME } from './package-name';
 import { createSerialOperation } from '@deep-foundation/deeplinks/imports/gql';
 import { SpeakOptions } from '@capacitor/screen-reader';
 
